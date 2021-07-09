@@ -1,7 +1,8 @@
 const path = require('path')
 const express = require('express')
 const handlebars  = require('express-handlebars');
-const morgan = require('morgan')
+const morgan = require('morgan');
+const { query } = require('express');
 const app = express()
 const port = 3000
 
@@ -23,6 +24,11 @@ app.get('/', (req, res) => {
 
 app.get('/news', (req, res) => {
   res.render('news');
+})
+
+app.get('/search', (req, res) => {
+  console.log(req.query.author)
+  res.render('search');
 })
 
 app.listen(port, () => {
